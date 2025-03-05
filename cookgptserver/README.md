@@ -2,28 +2,31 @@
 
 A Model Context Protocol server
 
-This is a TypeScript-based MCP server that implements a simple notes system. It demonstrates core MCP concepts by providing:
+This is a TypeScript-based MCP server that implements a simple recipe suggestion system. It demonstrates core MCP concepts by providing:
 
-- Resources representing text notes with URIs and metadata
-- Tools for creating new notes
-- Prompts for generating summaries of notes
+- Resources representing ingredient information with URIs and metadata
+- Tools for checking recipe healthiness and suggesting substitutes
+- Prompts for generating recipes
 
 ## Features
 
 ### Resources
-- List and access notes via `note://` URIs
-- Each note has a title, content and metadata
+- Access ingredient information via `ingredient-info://` URIs
+- Each ingredient has details about calories, nutrients, and cooking tips
 - Plain text mime type for simple content access
 
 ### Tools
-- `create_note` - Create new text notes
-  - Takes title and content as required parameters
-  - Stores note in server state
+- `isThisHealthy` - Check if a recipe is healthy
+  - Takes a recipe as a required parameter
+  - Provides health suggestions based on ingredients like paneer and vegetables
+- `suggest-substitutes` - Suggest substitutes for ingredients
+  - Takes an ingredient as a required parameter
+  - Provides alternative ingredients
 
 ### Prompts
-- `summarize_notes` - Generate a summary of all stored notes
-  - Includes all note contents as embedded resources
-  - Returns structured prompt for LLM summarization
+- `generate-recipe` - Generate a recipe
+  - Takes a recipe as a required parameter
+  - Returns a structured prompt for recipe generation
 
 ## Development
 
